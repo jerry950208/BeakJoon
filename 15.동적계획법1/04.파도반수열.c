@@ -1,23 +1,21 @@
 #include <stdio.h>
 
-long long arr[101];
+long long dp[101];
 
 int main(){
-	int T,N;
-	scanf("%d",&T);
+        int T,N;
+        scanf("%d",&T);
 
-	for(int i=0; i<3; i++)
-		arr[i]=1;
+        for(int i=0; i<3; i++)
+                dp[i] = 1;
 
-	for(int i=0; i<T; i++){
-		scanf("%d",&N);
-		for(int i=3; i<N; i++){
-			if(arr[i]==0){
-				arr[i] = arr[i-3]+arr[i-2];
-			}
-		}
-		printf("%lld\n",arr[N-1]);
-	}
-
-	return 0;
+        for(int i=0; i<T; i++){
+                scanf("%d",&N);
+                for(int j=3; j<N; j++){
+                        if(dp[j] == 0)
+                                dp[j] = dp[j-2] + dp[j-3];
+                }
+                printf("%lld\n",dp[N-1]);
+        }
+        return 0;
 }
