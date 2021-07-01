@@ -1,37 +1,69 @@
 #include <stdio.h>
 
-char chess[51][51];
-int min;
+char chess[50][51];
+int cnt1,cnt2,cnt3,cnt4,min = 65;
+
+int func_min(int a,int b){
+	return a < b ? a :b;
+}
+
+void func_chess(int a, int b){
+	
+	cnt1=0;
+	cnt2=0;
+	cnt3=0;
+	cnt4=0;
+
+	for(int i=a; i<a+8; i++){
+		for(int j=b; j<=b+8; j++){
+			if(j != b+8){
+				chess[a][b]='W';
+				if((i+j)%2 == 0 && chess[i][j] == 'W')
+					cnt1++;
+				else if((i+j)%2 == 1 && chess[i][j] == 'B')
+					cnt1++;
+				if((i+j)%2 == 0 && chess[i][j] == 'B')
+					cnt2++;
+				else if((i+j)%2 == 1 && chess[i][j] == 'W')
+					cnt2++;
+				
+				chess[a][b]='B';
+				if((i+j)%2 == 0 && chess[i][j] == 'W')
+					cnt3++;
+				else if((i+j)%2 == 1 && chess[i][j] == 'B')
+					cnt3++;
+				if((i+j)%2 == 0 && chess[i][j] == 'B')
+					cnt4++;
+				else if((i+j)%2 == 1 && chess[i][j] == 'W')
+					cnt4++;
+			}
+		}
+	}
+	printf("%d %d %d %d %d %d\n",a,b,cnt1,cnt2,cnt3,cnt4);
+	if(min > func_min(cnt1,cnt2) || min > func_min(cnt3,cnt4))
+		min = (func_min(cnt1,cnt2) <= func_min(cnt3,cnt4) ? func_min(cnt1,cnt2) : func_min(cnt3,cnt4));
+}
+
 
 int main(){
-        int N,M;
-        int cnt=0;
-		int N_div, M_div,temp;
-        scanf("%d %d",&N, &M);
-		N_div = N-8;
-		M_div = M-8;
+	int N,M;
+	int N_div,M_div;
+	scanf("%d %d",&N, &M);
 
-        for(int i=0; i<N; i++){
-                for(int j=0; j<=M; j++){
-                        scanf("%c",&chess[i][j]);
-                }
-        }
-		for(int a=0; a<N_div; a++){
-			for(int b=0; b<M_div; b++){
-        		for(int i=0; i<N; i++){
-                	for(int j=0; j<M; j++){
-                        if((i+j)%2 == 0 && chess[i][j] == 'W')
-                        cnt++;
-                        else if((i+j)%2 == 1 && chess[i][j] == 'B')
-                        cnt++;
-					}
-				}
-				temp = cnt <= 36 ? cnt : 76-cnt;
-				if(min < temp)
-					min = temp;
-				cnt = 0;
-            }
-        }
-        printf("%d\n",min);
-        return 0;
+	for(int i=0; i<N; i++){
+		for(int j=0; j<=M; j++){
+			scanf("%c",&chess[i][j]);
+		}
+	}
+
+	N_div = N-7;
+	M_div = M-7;
+
+	for(int i=0; i<=N_div; i++){
+		for(int j=0; j<=M_div; j++){
+			func_chess(i,j);
+		}
+	}
+	printf("%d\n",min);
+	return 0;
 }
