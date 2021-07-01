@@ -1,29 +1,34 @@
 #include <stdio.h>
+
+int arr[501][501];
+long long dp[501][501];
+
 int main(){
-	int T, max=0;
-	scanf("%d",&T);
-	int dp[T][T];
-	
-	for(int i=0; i<T; i++){
-		for(int j=0; j<=i; j++){
-			scanf("%d",&dp[i][j]);
-		}
-	}	
-	
-	for(int i=1; i<T; i++){
-		for(int j=0; j<=i; j++){
-			if(j==0)
-				dp[i][j] += dp[i-1][j]; // 피라미드 기준 가장 왼쪽
-			else if(j==i)
-				dp[i][j] += dp[i-1][j-1];// 피라미드 기준 가장 오른쪽
-			else
-				dp[i][j] += (dp[i-1][j-1] >= dp[i-1][j] ? dp[i-1][j-1] : dp[i-1][j]);
-			if(i == T-1)
-				if(max < dp[i][j])
-					max = dp[i][j];
-			
-		}
-	}
-	printf("%d\n",max);
-	return 0;
+        int N;
+        long long max = 0;
+        scanf("%d",&N);
+
+        for(int i=0; i<N; i++){
+                for(int j=0; j<=i; j++){
+                        scanf("%d",&arr[i][j]);
+                        dp[i][j] = arr[i][j];
+
+                        if(i>0){
+                                if(j == 0)
+                                        dp[i][j] = arr[i][j] + dp[i-1][j];
+
+                                else if(j == i)
+                                        dp[i][j] = arr[i][j] + dp[i-1][j-1];
+
+                                else
+                                        dp[i][j] = arr[i][j] + (dp[i-1][j-1] >= dp[i-1][j] ? dp[i-1][j-1] : dp[i-1][j]);
+                                if(i == N-1)
+                                        if(max < dp[i][j])
+                                                max = dp[i][j];
+                        }
+                }
+        }
+
+        printf("%lld\n",max);
+        return 0;
 }
