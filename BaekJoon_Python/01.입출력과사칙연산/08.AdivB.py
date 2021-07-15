@@ -1,4 +1,4 @@
 #!/usr/bin/env python3
 
-A,B = input().split()
-print('%f' %(a/b))
+A,B = map(int,input().split())
+print(A/B)
