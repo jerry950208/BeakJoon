@@ -11,11 +11,8 @@ int main(){
 	
 	int A,B;
 
-	for(int i=0; i<5; i++){
-		
-		cin >> A >> B;
-		cout << A+B << endl;
-	}
-
+	while(cin >> A >> B)
+		cout << A+B << "\n";
+	
 	return 0;
 }
