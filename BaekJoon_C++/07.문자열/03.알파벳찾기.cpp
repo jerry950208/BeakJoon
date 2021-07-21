@@ -11,7 +11,7 @@
 using namespace std;
 
 int main(){
-	char S[100];
+	char S[101];
 	int alpha[26];
 
 	for(int i=0; i<26; i++)
