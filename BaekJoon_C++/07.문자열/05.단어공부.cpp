@@ -7,14 +7,12 @@
 	가장 많이 사용된 알파벳이 여러개 존재하는 경우에는?를 출력
 */
 #include <iostream>
-#include <cstring>
-#include <string>
 
 using namespace std;
 
 int main(){
 	
-	char input[1000000];
+	string input;
 	int alpha[26];
 	int max = 0, cnt = 0, temp;
 	cin >> input;
@@ -23,15 +21,14 @@ int main(){
 	for(int i=0; i<26; i++)//		alpha 배열을 '0'으로 초기화
 		alpha[i] = 0;
 	//A : 65, a : 97
-	int input_len = strlen(input);
 
-	for(int i=0; i<input_len; i++){//소문자로 입력이 들어올경우 대문자로 바꿔줌
+	for(int i=0; i<input.length(); i++){//소문자로 입력이 들어올경우 대문자로 바꿔줌
 		if(input[i] >= 97){
 			input[i] -= 32;
 		}
 	}
 
-	for(int i=0; i<input_len; i++){//가장 많이 쓰인 알파벳 찾기
+	for(int i=0; i<input.length(); i++){//가장 많이 쓰인 알파벳 찾기
 		alpha[input[i]-65] += 1;
 		if(alpha[input[i]-65] > max)
 			max = alpha[input[i]-65];

@@ -4,22 +4,19 @@
 
 */
 #include <iostream>
-#include <cstring>
-#include <string>
 
 using namespace std;
 
 int main(){
 	
 	int T,R,S_len;
-	char S[20];
+	string S;
 
 	cin >> T;
 
 	for(int i=0; i<T; i++){
 		cin >> R >> S;
-		S_len = strlen(S);
-		for(int j=0; j<S_len; j++){
+		for(int j=0; j<S.length(); j++){
 			for(int k=0; k<R; k++){
 				cout << S[j];
 			}

@@ -6,21 +6,20 @@
 	-포함되어 있지 않다면 -1 출력하라
 */
 #include <iostream>
-#include <cstring>
-#include <string>
+
 using namespace std;
 
 int main(){
-	char S[101];
+	string S;;
 	int alpha[26];
 
 	for(int i=0; i<26; i++)
 		alpha[i] = -1;
 	cin >> S;
 	
-	for(int i=0; i<strlen(S); i++){
-		if(S[i] > 96 && alpha[S[i]-97] == -1)
-			alpha[S[i]-97] = i;
+	for(int i=0; i<S.length(); i++){
+		if(S[i] >= 'a' && alpha[S[i]-'a'] == -1)
+			alpha[S[i]-'a'] = i;
 	}
 	for(int i=0; i<26; i++)
 		cout << alpha[i] << " ";
