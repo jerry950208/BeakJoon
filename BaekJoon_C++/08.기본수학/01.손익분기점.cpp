@@ -18,7 +18,7 @@ int main(){
 	result = A / (C - B) + 1;
 	
 	if(C <= B)
-	cout << result << endl;
-	else
 	cout << "-1" << endl;
+	else
+	cout << result << endl;
 }
