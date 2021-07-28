@@ -6,7 +6,31 @@
 
 using namespace std;
 
-int check[1000000];
+bool check[1000000];
+
+void func_Prime(int M, int N);
+
+int main(){
+	
+	int M,N;
+	cin >> M >> N;
+	
+	func_Prime(M,N);
+
+	for(int i=M; i<=N; i++){
+		
+	}
+}
+
+void func_Prime(int M, int N){
+
+}
+/*
+#include <iostream>
+
+using namespace std;
+
+bool check[1000000];
 
 int main(){
 	
@@ -25,4 +49,4 @@ int main(){
 		if(i == N)
 			break;
 	}
-}
+}*/

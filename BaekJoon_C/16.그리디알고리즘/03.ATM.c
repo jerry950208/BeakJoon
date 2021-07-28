@@ -1,23 +1,39 @@
+/*
+	ATM
+
+*/
 #include <stdio.h>
+#include <stdlib.h>
+
+int compare(const void*, const void*);
 
 int main(){
-	int N,cnt;
-	scanf("%d",N);
-	int arr[N+1],time[N+1];
+	
+	int N;
+	scanf("%d",&N);
 
+	int arr[N+1];
 	for(int i=0; i<N; i++)
-		scanf("%d",arr[i]);
+		scanf("%d",&arr[i]);
 
-	for(int i=0; i<N; i++){
-		int min = 1001;
-		for(int j=0; j<=1000; j++){
-			if(arr[j] < min){
-				min = arr[j];
-				time[i] =  min;
-				cnt = j;
-			}
+	qsort(arr,N,sizeof(int),compare);
+	
+	int sum = 0;
 
-		}
+	for(int i=1; i<N; i++){
+		arr[i] += arr[i-1];
+		sum += arr[i];
 	}
+
+	printf("%d\n",sum+arr[0]);
 	return 0;
+}
+
+int compare(const void *a, const void *b){
+	if(*(int*)a > *(int*)b)
+		return 1;
+	else if(*(int*)a < *(int*)b)
+		return -1;
+	else
+		return 0;
 }
