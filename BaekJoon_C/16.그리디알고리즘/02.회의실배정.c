@@ -12,16 +12,27 @@
 
 typedef struct arr{
 	int start, end;
-};
+}com;
 
 int compare(const void *a, const void *b);
 
 int main(){
 	
 	int N,cnt = 0, t1, t2, last = 0;
+	scanf("%d",&N);
 
+	for(int i=0; i<N; i++){
+		scanf("")
+	}
 	return 0;
 }
 
 int compare(const void *a, const void *b){
+	
+	if(*(int *)a < *(int *)b)
+		return 1;
+	else if(*(int)a > *(int *)b)
+		return -1;
+	else
+		return 0;
 }
