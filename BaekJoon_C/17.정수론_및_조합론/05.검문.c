@@ -4,7 +4,19 @@
 	M은 공백으로 구분하여 모두 출력한다.
 	M은 증가하는 순서여야한다.
 */
+#include <stdio.h>
+#include <stdilb.h>
+int main(){
+	
+	int N,arr[101];
+	scanf("%d",&N);
 
+	for(int i=0; i<N; i++){
+		scanf("%d",&arr[i]);
+	}
+
+	return 0;
+}
 /*
 #include <stdio.h>
 #include <stdlib.h>

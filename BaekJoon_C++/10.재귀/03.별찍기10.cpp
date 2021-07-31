@@ -10,6 +10,8 @@
 
 	첫째줄에 N이 주어진다 N은 3의 거듭제곱이다
 */
+
+
 /*
 #include <iostream>
 
@@ -26,11 +28,12 @@ int main(){
 }
 
 void star(int N){
-	
+	int arr[N][N];
 	for(int i=0; i<N; i++){
 		for(int j=0; j<N; j++)
-			cout << "*";
-		
-		cout << endl;
+			arr[i][j] = '*';
 	}
+
+	for(int i=2; i<N*N; i+=3)
+		arr[]
 }*/
