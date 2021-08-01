@@ -10,6 +10,43 @@
 	다시 칠해야 하는 정사각형의 최소 개수를 구하는 프로그램을 작성하시오
 */
 #include <iostream>
+#define minFinder(a,b) a< b ? a : b
+
+using namespace std;
+
+int main(void){
+	
+	char board[50][50];
+
+	int N,M,min = 64;
+	int cntB = 0, cntW = 0;
+
+	cin >> N >> M;
+
+	for(int i=0; i<N; i++)
+		cin >> board[i];
+
+	for(int i=0; i<N-7; i++){
+		for(int j=0; j<M-7; j++){
+			cntB = 0; cntW = 0;
+			for(int a=i; a<i+8; a++){
+				for(int b=j; b<j+8; b++){
+					if((a+b)%2 == 0){
+						if(board[a][b] == 'B')
+							cntW++;
+						else
+							cntB++;
+					}
+				}
+			}
+			min = minFinder(min,cntB);
+			min = minFinder(min,cntW);
+		}
+	}
+	cout << min << endl;
+}
+/*
+#include <iostream>
 
 using namespace std;
 
@@ -79,4 +116,4 @@ int func_Small(int num1, int num2){
 	
 	else
 		return num2;
-}
+}*/
