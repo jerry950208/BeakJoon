@@ -3,6 +3,7 @@
 
 	N개의 수가 주어졌을때 이를 오름차순으로 정렬하는 프로그램을 작성하시오
 */
+
 #include <iostream>
 
 using namespace std;
@@ -11,6 +12,10 @@ int cnt[10001];
 
 int main(void){
 	
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
 	int N,num;
 	cin >> N;
 
