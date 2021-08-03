@@ -65,20 +65,20 @@ void func_Avg(int N, int arr[]){
 
 	cout << fixed;
 	cout.precision(0);
-	cout << "Avg = " << sum << "\n";
+	cout << sum << "\n";
 }
 
 void func_Mid(int N, int arr[]){
 	
 	int mid = N / 2;
 
-	cout << "Mid = " << arr[mid] << "\n";
+	cout << arr[mid] << "\n";
 }
 
 void func_Mod(int N, int arr[]){
 	
 	int cnt = 0, maximum = 0,check[8001] = { 0 };
-	int tmp;
+	int tmp, count = 0;
 	for(int i=0; i<N; i++){
 		if(arr[i] != 0){
 			check[arr[i] + 4000]++;
@@ -87,16 +87,31 @@ void func_Mod(int N, int arr[]){
 			}
 		}
 	}
+	
+	for(int i=0; i<N; i++){
+		if(check[arr[i]+4000] == maximum)
+			count++;
+	}
 
 	for(int i=0; i<=8000; i++){	
-		if(check[i] == maximum){
-			cnt++;
-			if(cnt == 1)
-				tmp = i-4000;
-			if(cnt == 2)
-				cout << "Mod = " << i-4000 << "\n";
-			if(cnt == 1 && i == 8000)
-				cout << tmp << "\n";
+
+		if(count/maximum == 1){
+			if(check[i] == maximum){
+				cout << i-4000 << "\n";
+				break;
+			}
+		}
+
+		else{
+			if(check[i] == maximum){
+				cnt++;
+				if(cnt == 1)
+					tmp = i-4000;
+				if(cnt == 2)
+					cout << i-4000 << "\n";
+				if(cnt == 1 && i == 8000)
+					cout << tmp << "\n";
+			}
 		}
 	}
 }
@@ -110,8 +125,8 @@ void func_Len(int N, int arr[]){
 		cout << result << "\n";
 	}
 	else{
-		result = -1 * (arr[N-1] - arr[0]);
-		cout << "Len = " << result << "\n";
+		result = arr[N-1] - arr[0];
+		cout << result << "\n";
 	}
 
 }
