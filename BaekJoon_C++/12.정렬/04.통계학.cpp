@@ -20,7 +20,7 @@ int main(void){
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	int N,arr[500000] = { 0 };
+	int N,arr[500001] = { 0 };
 	cin >> N;
 
 	for(int i=0; i<N; i++)
@@ -45,11 +45,11 @@ int main(void){
 
 int compare(const void* a, const void* b){
 	
-	if(*(int*)a < *(int*)b)
-		return -1;
-	
-	else if((*(int*)a > *(int*)b))
+	if(*(int*)a > *(int*)b)
 		return 1;
+	
+	else if((*(int*)a < *(int*)b))
+		return -1;
 
 	else
 		return 0;
@@ -57,15 +57,16 @@ int compare(const void* a, const void* b){
 
 void func_Avg(int N, int arr[]){
 	
-	double sum = 0.0;
+	double avg = 0.0;
+	
 	for(int i=0; i<N; i++)
-		sum += arr[i];
+		avg += arr[i];
 
-	sum /= N;
+	avg /= N;
 
 	cout << fixed;
 	cout.precision(0);
-	cout << sum << "\n";
+	cout << avg << "\n";
 }
 
 void func_Mid(int N, int arr[]){
@@ -77,56 +78,33 @@ void func_Mid(int N, int arr[]){
 
 void func_Mod(int N, int arr[]){
 	
-	int cnt = 0, maximum = 0,check[8001] = { 0 };
-	int tmp, count = 0;
-	for(int i=0; i<N; i++){
-		if(arr[i] != 0){
-			check[arr[i] + 4000]++;
-			if(check[arr[i] + 4000] >= maximum){
-				maximum = check[arr[i]+4000];
-			}
-		}
-	}
+	int cnt = 0, maximum = 0, tmp;
+	int check[8002] = { 0 };
 	
 	for(int i=0; i<N; i++){
-		if(check[arr[i]+4000] == maximum)
-			count++;
-	}
+		check[arr[i] + 4000] += 1;
+		if(check[arr[i] + 4000] > maximum){
+			maximum = check[arr[i] + 4000];
+		}
+	}	
 
-	for(int i=0; i<=8000; i++){	
-
-		if(count/maximum == 1){
-			if(check[i] == maximum){
+	for(int i=0; i<=8001; i++){	
+		if(check[i] == maximum){
+			cnt++;
+			tmp = i - 4000;
+			if(cnt == 2)
 				cout << i-4000 << "\n";
-				break;
-			}
-		}
-
-		else{
-			if(check[i] == maximum){
-				cnt++;
-				if(cnt == 1)
-					tmp = i-4000;
-				if(cnt == 2)
-					cout << i-4000 << "\n";
-				if(cnt == 1 && i == 8000)
-					cout << tmp << "\n";
-			}
 		}
 	}
+
+	if(cnt == 1)
+		cout << tmp << "\n";
 }
 
 void func_Len(int N, int arr[]){
 	
 	int result;
-
-	if(arr[N-1] >= 0){
-		result = arr[N-1] - arr[0];
-		cout << result << "\n";
-	}
-	else{
-		result = arr[N-1] - arr[0];
-		cout << result << "\n";
-	}
+	result = arr[N-1] - arr[0];
+	cout << result << "\n";
 
 }
