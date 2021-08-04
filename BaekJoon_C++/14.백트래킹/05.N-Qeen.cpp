@@ -7,23 +7,49 @@
 
 using namespace std;
 
-int N, cnt, board[16];
+int N, cnt, board[16] = { -1 };
 
-void func_Queen(int k);
+void Backtracking(int k);
+bool func_check(int a, int b);
 
 int main(void){
 	
 	cin >> N;
 	
-	Back_tracking(0);
+	Backtracking(0);
+	
+	cout << cnt << endl;
 }
 
-void func_Queen(int k){
+
+void Backtracking(int k){
 	
 	if(k == N){
 		cnt++;
 		return;
 	}
-
 	
+
+	for(int i=0; i<N; i++){
+		if(func_check(k,i)){
+			board[k] = i;
+			Backtracking(k+1);
+			board[k] = -1;
+		}
+	}
+}
+
+bool func_check(int a, int b){
+	//직선
+	for(int i=0; i<a; i++){
+		if(board[i] == b) return false;
+	}
+	//대각선
+	for(int i=0; i<=a; i++){
+		//왼쪽 대각선
+		if(board[a-i] == b-i) return false;
+		//오른쪽 대각선
+		if(board[a-i] == b+i) return false;
+	}
+	return true;
 }
