@@ -27,8 +27,7 @@ void Backtracking(int k){
 	if(k == N){
 		cnt++;
 		return;
-	}
-	
+	}	
 
 	for(int i=0; i<N; i++){
 		if(func_check(k,i)){
