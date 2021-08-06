@@ -2,7 +2,6 @@
         정수삼각형
 */
 #include <stdio.h>
-//#define maxFinder(a,b) a > b ? a : b
 
 int arr[500][500];
 int Dp[500][500];
