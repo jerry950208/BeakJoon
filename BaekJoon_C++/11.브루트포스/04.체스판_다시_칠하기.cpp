@@ -9,112 +9,73 @@
 
 	다시 칠해야 하는 정사각형의 최소 개수를 구하는 프로그램을 작성하시오
 */
-/*
+
 #include <iostream>
-#define minFinder(a , b) a < b ? a : b
+#include <string>
+#define min_Finder(a,b) a <= b ? a : b
 
 using namespace std;
 
+char board[51][51];
+int  minimum = 64;
+char W_start[8] = {'W','B','W','B','W','B','W','B'};
+char B_start[8] = {'B','W','B','W','B','W','B','W'};
+
+int func_board(int a, int b);
+
 int main(void){
 	
-	char board[50][50];
-	int N,M,min = 64;
-	int cntB = 0, cntW = 0;
+	int N,M,N_board,M_board;
+	int result, minimum = 64;
 
 	cin >> N >> M;
+	
+	N_board = N - 8;
+	M_board = M - 8;
 
 	for(int i=0; i<N; i++)
-		cin >> board[i];
-
-	for(int i=0; i<N-7; i++){
-		for(int j=0; j<M-7; j++){
-			cntB = 0; cntW = 0;
-			for(int a=i; a<i+8; a++){
-				for(int b=j; b<j+8; b++){
-					if((a+b)%2 == 0){
-						if(board[a][b] == 'B')
-							cntW++;
-						else
-							cntB++;
-					}
-				}
-			}
-			min = minFinder(min,cntB);
-			min = minFinder(min,cntW);
-		}
-	}
-	cout << min << endl;
-}
-*/
-#include <iostream>
-#define minFinder(a,b) a < b ? a : b
-
-using namespace std;
-
-int func_Painting(int num1, int num2);
-int func_Small(int num1, int num2);
-char chess[51][51];
-
-int main(void){
+		for(int j=0; j<M; j++)
+			cin >> board[i][j];
 	
-	int N, M, Minor_N, Minor_M;
-	int painting, result = 64;
-
-	cin >> N >> M;
-	Minor_N = N - 7;
-	Minor_M = M - 7;
-
-	for(int i=0; i<N; i++){
-		for(int j=0; j<M; j++){
-			cin >> chess[i][j];
+	for(int a=0; a <= N_board; a++){
+		for(int b=0; b <= M_board; b++){
+			minimum = min_Finder(minimum, func_board(a,b));
+			result = minimum;
 		}
 	}
 
-	for(int a=0; a<Minor_N; a++){
-		for(int b=0; b<Minor_M; b++){
-			painting = func_Painting(a,b);
-			result = func_Small(result,painting);
-		}
-	}
-	cout << result << endl;
+	cout << result << "\n";
 }
 
-int func_Painting(int num1, int num2){
+int func_board(int a, int b){
 	
-	int cnt1 = 0, cnt2 = 0, check, result;
+	int cnt1 = 0, cnt2 = 0, num = 0;
 
-	for(int i=num1; i<num1; i++){
-		for(int j=num2; j<num2; j++){
-			chess[i][j] = 'W';
-			check = (num1 + num2) % 2;
-				if((i + j) % 2 == check && chess[i][j] == 'B')
-					cnt1++;
-				else if((i + j) % 2 != check && chess[i][j] == 'W')
-					cnt1++;
-		}
-	}
-
-	for(int i=num1; i<num1; i++){
-		for(int j=num2; j<num2; j++){
-			chess[i][j] = 'B';
-			check = (num1 + num2) % 2;
-				if((i + j) % 2 == check && chess[i][j] == 'W')
-					cnt2++;
-				else if((i + j) % 2 != check && chess[i][j] == 'B')
-					cnt2++;
+	for(int i=a; i<a+8; i++){
+		
+		num = 0;
+		
+		for(int j=b; j<b+8; j++){
+			if(i%2 == 0 && board[i][j] != W_start[num])
+				cnt1++;
+			if(i%2 == 1 && board[i][j] != B_start[num])
+				cnt1++;
+			num++;
 		}
 	}
 	
-	result = func_Small(cnt1,cnt2);
-	
-	return result;
-}
+	for(int i=a; i<a+8; i++){
+		
+		num = 0;
 
-int func_Small(int num1, int num2){
-	
-	if(num1 <= num2)
-		return num1;
-	
-	else
-		return num2;
+		for(int j=b; j<b+8; j++){
+			if(i%2 == 1 && board[i][j] != W_start[num])
+				cnt2++;
+			if(i%2 == 0 && board[i][j] != B_start[num])
+				cnt2++;
+			num++;
+		}
+	}
+
+	return min_Finder(cnt1, cnt2);
 }
