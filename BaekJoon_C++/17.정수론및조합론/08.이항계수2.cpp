@@ -3,7 +3,6 @@
 	
 	자연수 N과 정수 K가 주어졌을때 nCk를 10007로 나눈 나머지를 구하는 프로그램 작성
 */
-/*
 #include <iostream>
 
 using namespace std;
@@ -26,4 +25,3 @@ int main(void){
 	}
 	cout << Dp[N][K] << "\n";
 }
-*/
