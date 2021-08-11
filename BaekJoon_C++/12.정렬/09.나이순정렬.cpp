@@ -4,32 +4,34 @@
 	이때, 나이가 증가하는 순으로, 나이가 같으면 먼저 가입한 사람이 앞에 오는 순서로 정렬하는 프로그램
 */
 
-/*
+//https://life-with-coding.tistory.com/411 (참고)
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
 
 using namespace std;
 
-bool compare(join<int,string> a, join<int,string> b){
-		return a.first < b.first;
-}
+bool compare(pair<int, string> a, pair<int, string> b);
 
 int main(void){
 	
-	join<int, string> tmp;
-	vector<join<int, string>> member;
+	pair<int,string> v;
+	vector<pair<int, string> > member;
 	int N;
 	cin >> N;
 
 	for(int i=0; i<N; i++){
-		cin >> tmp.first >> tmp.second;
-		member.push_back(tmp);
+		cin >> v.first >> v.second;
+		member.push_back(v);
 	}
+	
+	stable_sort(member.begin(),member.end(),compare);
 
-	stable_sort(member.begin(), member.end(), compare);
+	for(int i=0; i<N; i++){
+		cout << member[i].first << " " << member[i].second << "\n";
+	}
+}
 
-	for(int i=0; i<N; i++)
-		cout << member[i].first << " " << member[i].end << "\n";
-		
-}*/
+bool compare(pair<int, string> a, pair<int, string> b){
+	return a.first < b.first}
