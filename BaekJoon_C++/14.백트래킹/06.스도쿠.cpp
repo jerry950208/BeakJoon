@@ -1,94 +1,6 @@
 /*
 	스도쿠
 */
-/*
-#include <iostream>
-
-using namespace std;
-
-int sudoku[10][10], cnt;
-void func_sudoku();
-void func_3x3(int a, int b);
-
-int main(void){
-	
-	for(int i=1; i<10; i++){
-		for(int j=1; j<10; j++){
-			cin >> sudoku[i][j];
-			
-			if(sudoku[i][j] == 0)
-				cnt++;
-		}
-	}
-	
-	func_sudoku();
-
-	for(int i=1; i<10; i++){
-		for(int j=1; j<10; j++){
-			cout << sudoku[i][j] << " ";
-		}
-		cout << "\n";
-	}
-}
-
-void func_sudoku(){
-	
-	if(cnt == 0)
-		return;
-
-	for(int i=1; i<10; i++){
-		for(int j=1; j<10; j++){
-			if(i == 1){
-				if(j == 1 || j == 4 || j == 7)
-					func_3x3(i,j);
-			}
-
-			else if(i == 4){
-				if(j == 1 || j == 4 || j == 7)
-					func_3x3(i,j);
-			}
-
-			else if(i == 7){
-				if(j == 1 || j == 4 || j == 7)
-					func_3x3(i,j);
-			}
-		}
-	}
-}
-
-void func_3x3(int a, int b){
-	
-	bool check[10];
-	int i_tmp, j_tmp,count = 0;
-
-	for(int i=a; i<a+3; i++){
-		for(int j=b; j<b+3; j++){
-			if(sudoku[i][j] == 0){
-				count++;
-				i_tmp = i;
-				j_tmp = j;
-			}
-			else{
-				check[sudoku[i][j]] = true;
-			}
-		}
-	}
-
-	if(count == 1){
-		for(int i=1; i<10; i++){
-			if(check[i] == false)
-				sudoku[i_tmp][j_tmp] = i;
-		}
-		cnt--;
-	}
-}
-
-*/
-
-
-
-
-/*
 #include <iostream>
 
 using namespace std;
@@ -176,4 +88,4 @@ void func_Trans(int a, int b){
 //스도쿠 세로 체크
 void func_Length(int a, int b){
 
-}*/
+}
