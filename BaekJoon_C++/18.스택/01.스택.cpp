@@ -13,47 +13,52 @@
 */
 #include <iostream>
 #include <string>
-#include <stack>
+#include <stack>//스택 헤더파일
+
 using namespace std;
-stack<int>S;
- 
-int main() {
-    int n;
-    cin >> n;
-    for (int i = 0; i < n; i++) {
+
+stack<int> s;
+
+int main(void){
+
+        int N,num;
         string str;
-        cin >> str;
-        
-		//push
-		if (str == "push") {
-            int x; cin >> x;
-            S.push(x);
-        }
+        cin >> N;
 
-		//top
-        else if (str == "top") {
-            if (S.empty())cout << "-1"<<"\n";
-            else cout << S.top() << "\n";
-        }
+        for(int i=0; i<N; i++){
 
-		//pop
-        else if (str == "pop") {
-            if (S.empty())cout << "-1" << "\n";
-            else {
-                cout << S.top() << "\n";
-                S.pop();
-            }
-        }
+                cin >> str;
 
-		//empty
-        else if (str == "empty") {
-            cout << S.empty() << "\n";
-        }
+                if(str == "push"){
+                        cin >> num;
+                        s.push(num);
+                }
 
-		//size
-        else {
-            cout << S.size() << "\n";
+                else if(str == "pop"){
+
+                        if(s.empty())
+                                cout << "-1" << "\n";
+
+                        else{
+                                cout << s.top() << "\n";
+                                s.pop();
+                        }
+                }
+
+                else if(str == "size")
+                        cout << s.size() << "\n";
+
+                else if(str == "empty")
+                        cout << s.empty() << "\n";
+
+                else{
+
+                        if(s.empty())
+                                cout << "-1" << "\n";
+
+                        else
+                                cout << s.top() << "\n";
+                }
         }
-    }
-    return 0;
 }
+
