@@ -7,6 +7,50 @@
 */
 //'('만 스택에 넣고  ')' 는 그냥 입력받기
 #include <iostream>
+#include <string>
+#include <stack>
+using namespace std;
+
+bool func_Bracket(string str);
+
+int main(void){
+	
+	int N;
+	string str;
+	cin >> N;
+
+	for(int i=0; i<N; i++){
+		cin >> str;
+
+		if(func_Bracket(str))
+			puts("Yes");
+		else
+			puts("NO");
+	}
+}
+
+bool func_Bracket(string str){
+
+	int str_len = (int)str.length();
+	stack<char> s;
+
+	for(int i=0; i<str_len; i++){
+		
+		if(str[i] == '(')
+			s.push(str[i]);
+		
+		else{
+			if(!s.empty())
+				s.pop();
+
+			else
+				return false;
+		}
+	}
+
+	return s.empty();
+}
+/*#include <iostream>
 #include <stack>
 #include <string>
 using namespace std;
@@ -49,4 +93,4 @@ bool Check(string str){
 	}
 
 	return s.empty();
-}
+}*/
