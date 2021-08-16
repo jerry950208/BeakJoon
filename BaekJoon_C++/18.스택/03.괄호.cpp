@@ -9,6 +9,51 @@
 #include <iostream>
 #include <string>
 #include <stack>
+
+using namespace std;
+
+void func_Check(string a);
+
+int main(void){
+	
+	int N;
+	string str;
+	cin >> N;
+
+	for(int i=0; i<N; i++){
+		
+		cin >> str;
+		func_Check(str);
+	}
+}
+
+void func_Check(string str){
+
+	int len = str.length();
+	stack<int> s;
+
+	for(int i=0; i<len; i++){
+		if(str[i] == '(')
+			s.push(str[i]);
+
+		else{
+			if(i == 0 || s.size() == 0) goto No;
+			
+			else s.pop();
+		}
+	}
+
+	if(s.size() == 0)
+		puts("YES");
+	else{
+		No :
+		puts("NO");
+	}
+}
+/*
+#include <iostream>
+#include <string>
+#include <stack>
 using namespace std;
 
 bool func_Bracket(string str);
@@ -43,50 +88,6 @@ bool func_Bracket(string str){
 			if(!s.empty())
 				s.pop();
 
-			else
-				return false;
-		}
-	}
-
-	return s.empty();
-}
-/*#include <iostream>
-#include <stack>
-#include <string>
-using namespace std;
-
-bool Check(string str);
-
-int main(void){
-	
-	int N;
-	string str;
-	cin >> N;
-
-	for(int i=0; i<N; i++){
-		cin >> str;
-		
-		if(Check(str))
-			puts("Yse");
-		
-		else
-			puts("NO");
-	}
-}
-
-bool Check(string str){
-
-	int str_len = str.length();
-	stack<char> s;
-
-	for(int i=0; i<str_len; i++){
-		
-		if(str[i] == '(')
-			s.push(str[i]);
-
-		else{
-			if(!s.empty())
-				s.pop();
 			else
 				return false;
 		}
