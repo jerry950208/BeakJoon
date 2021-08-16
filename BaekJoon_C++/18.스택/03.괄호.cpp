@@ -12,6 +12,7 @@
 
 using namespace std;
 
+
 void func_Check(string a);
 
 int main(void){
