@@ -13,27 +13,61 @@
 	* 각 문자열은 영문 알파벳, 공백, 소괄호, 대활호 등으로 이루어져 있으며 길이는 100글자 보다 작거나 같다
 	* 입력의 종료조건으로 맨 마지막에 점 하나가 들어온다
 */
-
-/*
-So when I die (the [first] I will see in (heaven) is a score list).
-[ first in ] ( first out ).
-Half Moon tonight (At least it is better than no Moon at all].
-A rope may form )( a trail in a maze.
-Help( I[m being held prisoner in a fortune cookie factory)].
-([ (([( [ ] ) ( ) (( ))] )) ]).
- .
-.
-*/
 #include <iostream>
-#include <string>
 #include <stack>
+#include <string>
 
 using namespace std;
+
+void func_Check(string str);
 
 int main(void){
 	
 	string str;
-	getline(cin, str);
+
+	while(1){
+		
+		getline(cin, str);
+		
+		if(str.length() == 1 && str[0] == '.')
+			break;
+
+		func_Check(str);
+	}
+}
+
+void func_Check(string str){
 	
+	int len = str.length();
+	stack<int> s;
 	
+	for(int i=0; i<len; i++){
+		
+		if(str[i] == '(' || str[i] == '[') s.push(str[i]);
+
+		else if(str[i] == ')'){
+			
+			if(s.size() == 0 || s.top()+1 != str[i]){
+				puts("no");
+				return;
+			}
+
+			else if(s.top()+1 == str[i]) s.pop();
+			
+		}
+
+		else if(str[i] == ']'){
+			
+			if(s.size() == 0 || s.top()+2 != str[i]){
+				puts("no");
+				return;
+			}
+
+			else if(s.top()+2 == str[i]) s.pop();
+		}
+	}
+	
+	if(s.empty())	puts("yes");
+
+	else if(!s.empty())	puts("no");
 }
