@@ -34,7 +34,6 @@ int main(void){
 	}
 	return 0;
 }
-
 void func_Cheker(char str[]){
 	
 	int len = strlen(str);
