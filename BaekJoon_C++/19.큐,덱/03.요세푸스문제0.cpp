@@ -13,29 +13,37 @@ using namespace std;
 
 int main(void){
 	
-	int N, K, cnt = 1;
-	queue<int> q;
+	int N, K;
 	cin >> N >> K;
 
+	queue<int> q;
 	for(int i=1; i<=N; i++)
 		q.push(i);
+
+	int cnt = 1;
 	
 	cout << "<";
 	while(!q.empty()){
 		
 		if(cnt == K){
-			if(q.size() == N)
-				cout << q.front() << ",";
+			
+			if(q.size() == N){
+				if(N == 1)
+					cout << q.front();
+				else
+					cout << q.front() << ",";
+			}
 			else if(q.size() != 1)
 				cout << " " << q.front() << ",";
-			else if(q.size() == 1)
+			else
 				cout << " " << q.front();
-
+			
 			q.pop();
 			cnt = 1;
 		}
 
 		else{
+			
 			int data = q.front();
 			q.pop();
 			q.push(data);
