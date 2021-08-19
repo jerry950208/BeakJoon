@@ -6,3 +6,44 @@
 	2. 나머지 문서들 중 현재 문서보다 중요도가 높은 문서가 하나라도 있다면 
 	이 문서를 인쇄하지 않고 Queue의 가장 뒤에 재배치한다 그렇지 않으면 바로 인쇄를 한다
 */
+
+/*
+#include <iostream>
+#include <queue>
+using namespace std;
+
+int main(void){
+	
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int T,N,M;
+	cin >> T;
+
+	for(int Test_case=0; Test_case<T; Test_case++){
+		
+		cin >> N >> M;
+		priority_queue<int, vector<int>, greater<int> > pq; //우선순위 큐 오름차순
+		int num;
+
+		for(int i=0; i<N; i++){
+			cin >> num;
+			pq.push(num);
+		}
+		
+		int cnt = 0, M_cnt = 0;;
+
+		for(int i=0; i<N; i++){
+			
+			if(cnt == M){
+				
+			}
+		}
+
+		//for(int i=0; i<N; i++){
+		//	cout << pq.top() << endl;
+		//	pq.pop();
+		//}
+	}
+}*/
