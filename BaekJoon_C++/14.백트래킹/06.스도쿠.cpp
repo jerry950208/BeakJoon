@@ -1,6 +1,7 @@
 /*
 	스도쿠
 */
+/*
 #include <iostream>
 
 using namespace std;
@@ -88,4 +89,4 @@ void func_Trans(int a, int b){
 //스도쿠 세로 체크
 void func_Length(int a, int b){
 
-}
+}*/
