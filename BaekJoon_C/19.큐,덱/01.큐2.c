@@ -13,179 +13,62 @@
 #include <stdio.h>
 #include <string.h>
 
-int N, queue[2000001], q_cnt;
-
-void func_push();
-int func_pop();
-int func_size();
-int func_empty();
-int func_front();
-int func_back();
-
-int main(void){
-
-        char str[7];
-        scanf("%d", &N);
-
-        for(int i=0; i<N; i++){
-
-                scanf("%s",str);
-
-                if(strcmp(str,"push") == 0) 
-					func_push();
-                else if(strcmp(str,"pop") == 0) 
-					printf("%d\n", func_pop());
-                else if(strcmp(str,"size") == 0) 
-                    printf("%d\n",func_size());
-                else if(strcmp(str,"empty") == 0) 
-                    printf("%d\n",func_empty());
-                else if(strcmp(str,"front") == 0) 
-                    printf("%d\n",func_front());
-                else if(strcmp(str,"back") == 0) 
-                    printf("%d\n",func_back());
-        }
-        return 0;
-}
-
-
-void func_push(){
-
-        int num;
-        scanf("%d", &num);
-
-        queue[q_cnt++] = num;
-}
-
-int func_pop(){
-
-        if(queue[0] == 0)
-        	return -1;
-
-		int pop = func_front();
-
-        for(int i=0; i<q_cnt-1; i++)
-        	queue[i] = queue[i+1];
-        q_cnt--;
-
-        if(q_cnt == 0)
-                queue[0] = 0;
-
-		return pop;
-}
-int func_size(){
-        return q_cnt;
-}
-
-int func_empty(){
-
-        if(q_cnt == 0)
-            return 1;
-        else
-            return 0;
-}
-
-int func_front(){
-
-        if(queue[0] == 0)
-            return -1;
-    
-        return queue[0];
-}
-
-int func_back(){
-
-        if(queue[0] == 0)
-            return -1;
-    
-        return queue[q_cnt-1];
-}
-/*
-#include <stdio.h>
-#include <string.h>
-
-int N, queue[2000001], q_cnt;
-
-void func_push();
-void func_pop();
-void func_size();
-void func_empty();
-void func_front();
-void func_back();
-
 int main(void){
 	
+	int N, q[2000001] = { 0 }, q_cnt = 0, num, zero = 0;
 	char str[7];
 	scanf("%d", &N);
-
+	
 	for(int i=0; i<N; i++){
-		
-		scanf("%s",str);
-		
-		if(strcmp(str,"push") == 0) func_push();
-		else if(strcmp(str,"pop") == 0) func_pop();
-		else if(strcmp(str,"size") == 0) func_size();
-		else if(strcmp(str,"empty") == 0) func_empty();
-		else if(strcmp(str,"front") == 0) func_front();
-		else if(strcmp(str,"back") == 0) func_back();
+		scanf("%s", str);
+
+		if(strcmp(str,"push") == 0){
+			scanf("%d", &num);
+			q[q_cnt++] = num;
+		}
+
+		else if(strcmp(str,"front") == 0){
+
+			if(q[zero] == 0)
+				printf("-1\n");
+
+			else
+				printf("%d\n", q[zero]);
+		}
+
+		else if(strcmp(str,"back") == 0){
+			
+			if(q[zero] == 0)
+				printf("-1\n");
+
+			else
+				printf("%d\n", q[q_cnt-1]);
+		}
+
+		else if(strcmp(str,"pop") == 0){
+			
+			if(q[zero] == 0)
+				printf("-1\n");
+
+			else{
+				
+				printf("%d\n", q[zero]);
+				zero++;
+			}
+		}
+
+		else if(strcmp(str,"size") == 0){
+			printf("%d\n", q_cnt);
+		}
+
+		else if(strcmp(str,"empty") == 0){
+			
+			if(q[zero] == 0)
+				printf("1\n");
+
+			else
+				printf("0\n");
+		}
 	}
 	return 0;
 }
-
-
-void func_push(){
-
-	int num;
-	scanf("%d", &num);
-
-	queue[q_cnt++] = num;
-}
-
-void func_pop(){
-	
-	if(queue[0] == 0){
-		printf("-1\n");
-		return;
-	}
-	
-	func_front();
-		
-	for(int i=0; i<q_cnt-1; i++) 
-		queue[i] = queue[i+1];
-	q_cnt--;
-
-	if(q_cnt == 0)
-		queue[0] = 0;
-}
-
-void func_size(){
-	
-	printf("%d\n",q_cnt);
-}
-
-void func_empty(){
-	
-	if(queue[0] == 0){
-		printf("1\n");
-		return;
-	}
-
-	printf("0\n");
-}
-
-void func_front(){
-	
-	if(queue[0] == 0){
-		printf("-1\n");
-		return;
-	}
-	printf("%d\n",queue[0]);
-}
-
-void func_back(){
-	
-	if(queue[0] == 0){
-		printf("-1\n");
-		return;
-	}
-	printf("%d\n",queue[q_cnt-1]);
-}*/
