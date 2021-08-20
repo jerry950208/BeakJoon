@@ -7,4 +7,15 @@
 	2. 왼쪽으로 한 칸 이동시킨다 (A1 --- Ak 였던 원소가 A2 --- Ak, A1 이 된다)
 	3. 오른쪽으로 한 칸 이동시킨다 (A1 --- Ak 였던 원소가 Ak, A1 --- Ak-1이 된다)
 */
+#include <iostream>
+#include <queue>
+using namespace std;
 
+int main(void){
+	
+	queue<int> q;
+	int N, M, cnt;
+	cin >> N >> M;
+	
+	
+}

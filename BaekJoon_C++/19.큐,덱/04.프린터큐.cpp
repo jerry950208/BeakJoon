@@ -12,6 +12,34 @@ using namespace std;
 
 int main(void){
 	
+	int T, N ,M;
+	cin >> T;
+
+	while(T--){
+		
+		queue<int> q;
+		int arr[101] = { 0 };
+		cin >> N >> M;
+
+		for(int i=0; i<N; i++){
+			cin >> arr[i];
+			
+			for(int j=0; j<N; j++){
+				if(arr[M] < arr[j]){
+					
+				}
+			
+			}
+		}
+	}
+}
+/*
+#include <iostream>
+#include <queue>
+using namespace std;
+
+int main(void){
+	
 	queue<int> q;
 	int T, N, M;
 	cin >> T;
@@ -39,4 +67,4 @@ int main(void){
 
 
 	}
-}
+}*/
