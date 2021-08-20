@@ -58,7 +58,7 @@ int main(void){
 		}
 
 		else if(strcmp(str,"size") == 0){
-			printf("%d\n", q_cnt);
+			printf("%d\n", q_cnt - zero);
 		}
 
 		else if(strcmp(str,"empty") == 0){
