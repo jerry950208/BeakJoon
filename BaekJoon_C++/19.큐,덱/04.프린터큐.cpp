@@ -10,61 +10,29 @@
 #include <queue>
 using namespace std;
 
-int main(void){
+int main(void){	
 	
-	int T, N ,M;
+	int T, N, M, num;
 	cin >> T;
 
-	while(T--){
-		
-		queue<int> q;
-		int arr[101] = { 0 };
-		cin >> N >> M;
-
-		for(int i=0; i<N; i++){
-			cin >> arr[i];
-			
-			for(int j=0; j<N; j++){
-				if(arr[M] < arr[j]){
-					
-				}
-			
-			}
-		}
-	}
-}
-/*
-#include <iostream>
-#include <queue>
-using namespace std;
-
-int main(void){
-	
-	queue<int> q;
-	int T, N, M;
-	cin >> T;
-
-	for(int test_case=0; test_case<T; test_case++){
+	for(int i=0; i<T; i++){
 		
 		cin >> N >> M;
-		int num, tmp, cnt = 0;
-		
+		queue<pair<int,int>> q;
+		priority_queue<int> qp;
+
 		for(int i=0; i<N; i++){
 			cin >> num;
-			q.push(num);
-			if(cnt == M)
-				tmp = num;
-			else
-				cnt++;
-		}			
-		
-		cnt = 0;
-
-		for(int i=0; i<N; i++){
-			if(tmp > )
+			q.push({i, num});
+			pq.push(num);
 		}
 
+		if(N == 1){
+			puts("1");
+			return;
+		}
 
+		
 
 	}
-}*/
+}
