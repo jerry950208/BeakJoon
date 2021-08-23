@@ -10,29 +10,68 @@
 #include <queue>
 using namespace std;
 
-int main(void){	
+int main(void){
 	
-	int T, N, M, num;
+	queue<pair<int, int> > q;
+	priority_queue<int> qp;
+	int T, N, M, num, cnt;
 	cin >> T;
+	
+	for(int i=0; i<N; i++){
+		cin >> num;
+		q.push(make_pair(i, num));
+		pq.push(num);
+		cnt = 0;
+	}
 
-	for(int i=0; i<T; i++){
+	while(!q.empty()){
 		
-		cin >> N >> M;
-		queue<pair<int,int>> q;
-		priority_queue<int> qp;
+		int index = q.front().first;
+		int value = q.front().second;
+		q.pop();
 
-		for(int i=0; i<N; i++){
-			cin >> num;
-			q.push({i, num});
-			pq.push(num);
-		}
-
-		if(N == 1){
-			puts("1");
-			return;
-		}
-
-		
-
+		if(pq.top())
 	}
 }
+/*
+#include <iostream>
+#include <queue>
+using namespace std;
+
+int main(void){
+	
+	queue<pair<int, int> > q;
+	priority_queue<int> pq;
+	int T, N, M, num, cnt;
+	cin >> T;
+	
+	for(int k=0; k<T; k++){
+		
+		cin >> N >> M;
+		for(int i=0; i<N; i++){
+			cin >> num;
+			q.push(make_pair(i,num));
+			pq.push(num);
+			cnt = 0;
+		}
+
+		while(!q.empty()){
+			
+			int index = q.front().first;
+			int value = q.front().second;
+			q.pop();
+
+			if(pq.top() == value){
+				pq.pop();
+				++cnt;
+
+				if(index == M){
+					cout << cnt << endl;
+					break;
+				}
+			}
+
+			else q.push(make_pair(index, value));
+		}
+	}
+}*/
