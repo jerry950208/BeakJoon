@@ -6,72 +6,51 @@
 	2. 나머지 문서들 중 현재 문서보다 중요도가 높은 문서가 하나라도 있다면 
 	이 문서를 인쇄하지 않고 Queue의 가장 뒤에 재배치한다 그렇지 않으면 바로 인쇄를 한다
 */
-#include <iostream>
-#include <queue>
-using namespace std;
 
-int main(void){
-	
-	queue<pair<int, int> > q;
-	priority_queue<int> qp;
-	int T, N, M, num, cnt;
-	cin >> T;
-	
-	for(int i=0; i<N; i++){
-		cin >> num;
-		q.push(make_pair(i, num));
-		pq.push(num);
-		cnt = 0;
-	}
 
-	while(!q.empty()){
-		
-		int index = q.front().first;
-		int value = q.front().second;
-		q.pop();
-
-		if(pq.top())
-	}
-}
 /*
+//큐는 인덱스 확인 불가
 #include <iostream>
+#include <algorithm>
 #include <queue>
 using namespace std;
 
 int main(void){
 	
-	queue<pair<int, int> > q;
-	priority_queue<int> pq;
-	int T, N, M, num, cnt;
-	cin >> T;
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int Testcase;
+	cin >> Testcase;
 	
-	for(int k=0; k<T; k++){
+	for(int i=0; i<Testcase; i++){
+		int N, idx;
+		cin >> N >> idx;
 		
-		cin >> N >> M;
+		int input;
+		queue<pair<int, int> > q;
 		for(int i=0; i<N; i++){
-			cin >> num;
-			q.push(make_pair(i,num));
-			pq.push(num);
-			cnt = 0;
+			cin >> input;
+			q.push(make_pair(i, input));
 		}
-
-		while(!q.empty()){
-			
-			int index = q.front().first;
-			int value = q.front().second;
-			q.pop();
-
-			if(pq.top() == value){
-				pq.pop();
-				++cnt;
-
-				if(index == M){
-					cout << cnt << endl;
-					break;
-				}
+		
+		int cnt = 0;
+		for(int i=0; i<N; i++){
+			if(q[i].second > q[idx].second){
+				q[i].pop();
+				cnt++;
 			}
-
-			else q.push(make_pair(index, value));
 		}
+
+		for(int i=0; i<q.size(); i++){
+			if(q[i].second == q[idx].second){
+				cnt++;
+				if(i == idx)
+					break;
+			}
+		}
+
+		cout << cnt << "\n";
 	}
 }*/
