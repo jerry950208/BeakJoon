@@ -6,35 +6,34 @@
 	예를 들어, 수열 A =. 10, 20, 10, 30, 20, 50} 인 경우에 가장 긴 증가하는 부분수열은 {10, 20, 30, 50} 이고 길이가 4이다
 */
 #include <iostream>
-#include <vector>
+#include <algorithm>
 using namespace std;
 
 int main(void){
-	
-	int T;
-	int N, M ,K, H;
-	int X, Y;
-	int answer = 0;
 
-	int dp[1001];
-	vector<int> v;
-	cin >> T;
+        int n;
+        int dp[1000] = {};
+        int arr[1000] = {};
+        int sum = 0;
 
-	for(int i=0; i<T; i++){
-		cin >> K;
-		v.empalce_back(K);
-		int dp_max = 0;
+        cin >> n;
 
-		for(int j=0; j<v.size(); j++){
-			if(v[i] > v[j]){
-				if(dp_max < dp[j])
-					dp_max = dp[j];
-			}
-		}
+        for(int i=0; i<n; i++)
+                cin >> arr[i];
 
-	dp[i] = dp_max + 1;
-	answer = max(answer, dp[i]);
-	}
+                for(int i=0; i<n; i++){
 
-	cout << anwser << endl;
+                        dp[i] = 1;
+
+                        for(int j=0; j<i; j++){
+                                if(arr[i] > arr[j])
+                                        dp[i] = max(dp[i], dp[j] + 1);
+                        }
+
+                        sum = max(sum, dp[i]);
+                }
+
+                cout << sum << endl;
+
+    return 0;
 }
