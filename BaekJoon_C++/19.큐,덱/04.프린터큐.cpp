@@ -6,6 +6,8 @@
 	2. 나머지 문서들 중 현재 문서보다 중요도가 높은 문서가 하나라도 있다면 
 	이 문서를 인쇄하지 않고 Queue의 가장 뒤에 재배치한다 그렇지 않으면 바로 인쇄를 한다
 */
+
+/*
 #include <iostream>
 #include <queue>
 #include <algorithm>
@@ -65,44 +67,25 @@ int main(void){
 		cout << answer << "\n";
 	}
 }
-
-/*
+*/
 #include <iostream>
 #include <queue>
-#include <algorithm>
 using namespace std;
 
 int main(void){
-	
-	int TestCase;
-	cin >> TestCase;
 
-	for(int i=0; i<TestCase; i++){
-		//queue<pair<int, int> > q;
-		priority_queue<int> q;
-		int N, M;
+	int input;
+	cin >> input;
+
+	for(int i=0; i<input; i++){
+		int N, M, idx;
 		cin >> N >> M;
-		
-		if(N == 1){
-			cout << "1" << "\n";
-			break;
-		}
-		
-		int input, idx,answer = 0;
-		for(int j=0; j<N; j++){
-			cin >> input;
-			q.push(input);
-			if(j = M)
-				idx = input;
-		}
+		int arr[N+1];
 
-		
-		for(int j=0; j<N; j++){
-			if(q.front() > idx){
-				q.pop();
-				answer++;
-			}
-			
+		for(int i=0; i<N; i++){
+			cin >> idx;
+			arr[i] = idx;
 		}
 	}
-}*/
+	return 0;
+}
