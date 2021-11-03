@@ -6,6 +6,36 @@
 	첫째 줄에 n이 주어진다 n은 20보다 작거나 같은 자연수 또는 0이다
 */
 #include <iostream>
+using namespace std;
+
+int fibo_arr[2] = {0, 1};
+
+int fibonacci(int a){
+	
+	if(a == 0)
+		return fibo_arr[0];
+	
+	else if(a == 1)
+		return fibo_arr[1];
+
+	else{
+		int tmp = fibo_arr[0] + fibo_arr[1];
+		fibo_arr[0] = fibo_arr[1];
+		fibo_arr[1] = tmp;
+		return fibonacci(a-1);
+	}
+}
+
+int main(void){
+	
+	int input;
+	cin >> input;
+
+	cout << fibonacci(input) << endl;
+	return 0;
+}
+/*
+#include <iostream>
 
 using namespace std;
 
@@ -37,4 +67,4 @@ int func_Fibo(int n, int arr[]){
 
 		return func_Fibo(n-1,arr);
 	}
-}
+}*/

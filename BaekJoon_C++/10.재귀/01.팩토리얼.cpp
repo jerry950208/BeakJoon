@@ -4,23 +4,20 @@
 	N!을 출력하는 프로그램을 작성하시오
 */
 #include <iostream>
-
 using namespace std;
 
-int func_Factorial(int N);
-
-int main(){
+int factorial(int a){
 	
-	int N;
-	cin >> N;
-	
-	cout << func_Factorial(N) << endl;
+	if(a <= 1)
+		return 1;
+	return a * factorial(a-1);
 }
 
-int func_Factorial(int N){	
+int main(void){
 	
-	if(N <= 1)
-		return 1;
+	int input;
+	cin >> input;
 
-	return func_Factorial(N-1) * N;
+	cout << factorial(input) << endl;
+	return 0;
 }
