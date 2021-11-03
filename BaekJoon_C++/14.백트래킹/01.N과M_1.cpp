@@ -4,6 +4,27 @@
 	* 1부터 N까지 자연수 중에서 중복없이 M개를 고른 수열
 */
 #include <iostream>
+#include <vector>
+using namespace std;
+
+int solution(int n, int m){
+	
+	for(int i=0; i<n; i++){
+		int cnt = 0;
+		
+	}
+	return 0;
+}
+
+int main(void){
+	int n, m;
+
+	cin >> n >> m;
+
+	solution(n, m);
+}
+/*
+#include <iostream>
 
 using namespace std;
 
@@ -37,4 +58,4 @@ void func_sequence(int k, int N, int M){
 			}
 		}
 	}
-}
+}*/
