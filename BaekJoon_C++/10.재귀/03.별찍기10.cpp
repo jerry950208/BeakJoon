@@ -10,30 +10,28 @@
 
 	첫째줄에 N이 주어진다 N은 3의 거듭제곱이다
 */
-
-
-/*
 #include <iostream>
-
 using namespace std;
 
-void star(int N);
+void star(int i, int j, int num){
+	if((i / num) % 3 == 1 && (j / num) % 3 == 1)
+		cout << ' ';
 
-int main(){
-	
-	int N;
-	cin >> N;
-
-	star(N);
+	else{
+		if(num / 3 == 0)
+			cout << '*';
+		else
+			star(i, j, num/3);
+	}
 }
 
-void star(int N){
-	int arr[N][N];
-	for(int i=0; i<N; i++){
-		for(int j=0; j<N; j++)
-			arr[i][j] = '*';
-	}
+int main(void){
+	int num;
+	cin >> num;
 
-	for(int i=2; i<N*N; i+=3)
-		arr[]
-}*/
+	for(int i=0; i<num; i++){
+		for(int j=0; j<num; j++)
+			star(i, j, num);
+		cout << '\n';
+	}
+}
