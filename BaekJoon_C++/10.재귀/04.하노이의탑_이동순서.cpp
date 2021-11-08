@@ -21,8 +21,7 @@ int main(void){
 	hanoi(K, 1, 3, 2);
 }
 
-void hanoi(int N, int start, int mid, int end){
-	
+void hanoi(int N, int start, int mid, int end){	
 	if(N == 1)
 		cout << start << " " << mid << "\n";
 	
@@ -32,3 +31,4 @@ void hanoi(int N, int start, int mid, int end){
 		hanoi(N-1, end, mid, start);
 	}
 }
+
