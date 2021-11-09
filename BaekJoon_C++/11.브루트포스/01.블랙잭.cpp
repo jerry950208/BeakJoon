@@ -5,6 +5,25 @@
   첫째 줄에 M을 넘지 않으면서 M에 최대한 가까운 카드 3장의 합을 출력
 */
 #include <iostream>
+#include <vector>
+using namespace std;
+
+int main(void){
+	
+	vector<int> n;
+	int N, M, num;
+	cin >> N >> M;
+	
+	for(int i=0; i<N; i++){
+		cin >> num;
+		n.push_back(num);
+	}
+	
+	Black_Jack(N, M);
+	return 0;
+}
+/*
+#include <iostream>
  
 using namespace std;
 
@@ -26,4 +45,4 @@ int main(){
 		}
 	}
 	cout << max << endl;
-}
+}*/

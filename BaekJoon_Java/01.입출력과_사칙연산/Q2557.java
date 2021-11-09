@@ -1,4 +1,4 @@
-public class Main{ 		//Java class Main 선언(Main 은 클래스명)
+public class Q2557{ 		//Java class Main 선언(Main 은 클래스명)
 	public static void main(String[] args){
 		System.out.print("Hello World!");		//출력하는 방법
 		
