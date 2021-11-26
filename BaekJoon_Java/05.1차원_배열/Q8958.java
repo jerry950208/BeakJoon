@@ -6,29 +6,26 @@ public class Q8958{
 	public static void main(String[] args){
 
 		Scanner in = new Scanner(System.in);
-		int T = in.nextInt();
+		int input = in.nextInt();
 
-		for(int i=0; i<T; i++){
+		for(int i=0; i<input; i++){
 			
-			String scores;
-			int cnt = 0;
 			int result = 0;
+			int cnt = 0;
+			String str = in.next();
 			
-			// Scanner에서 char를 바로 입력받는것 없다
-			// 따라서 Scanner.next()를 통해 입력받은 다음, String.charAt()으로 char를 꺼내면 된
-			scores = in.next().charAt(0);			//입력받은 다음, 첫번째 char 꺼내기
-			//scores = in.next().trim().charAt(0);	//공백을 제거한 다음 첫번째 char꺼내
-			for(int j=0; j<scores.length; j++){
+			for(int j=0; j<str.length(); j++){
 				
-				if(scores[j] == 'O')
-					result += ++cnt;
-
+				if(str.charAt(j) == 'O')
+					cnt++;
 				else
 					cnt = 0;
+				
+				result += cnt;
+				//System.out.printf("j = %d\t cnt = %d\t result = %d\n", j, cnt, result);
 			}
 
 			System.out.println(result);
 		}
-
 	}
 }
